@@ -1,0 +1,375 @@
+<title>Estetik madaniyat studiyasi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter+Tight:wght@400;500;600&display=swap">
+<style>
+:root{--paper:#F7F3EE;--panel:#FFFFFF;--ink:#241C2B;--mut:#6D6475;--line:#E4DBD3;--soft:#F1EAE4;--acc:#7A2A4C;
+--on:#fff;--m1:#B2447C;--m2:#12747F;--m3:#B4601A;--m4:#3555A8;--ok:#2B7A57;--bad:#B23B30;--shadow:0 1px 2px rgb(36 28 43/.06),0 8px 24px -12px rgb(36 28 43/.18)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#171219;--panel:#211A25;--ink:#F3ECF1;--mut:#B6AABD;--line:#3A2F3F;--soft:#2A2230;--acc:#E58AB0;--m1:#E57DB5;--m2:#4CC0CE;--m3:#EBA765;--m4:#8CA8F3;--on:#1B1220;--ok:#6CCB9D;--bad:#F29186;--shadow:0 1px 2px rgb(0 0 0/.4),0 8px 24px -12px rgb(0 0 0/.6);color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#171219;--panel:#211A25;--ink:#F3ECF1;--mut:#B6AABD;--line:#3A2F3F;--soft:#2A2230;--acc:#E58AB0;--m1:#E57DB5;--m2:#4CC0CE;--m3:#EBA765;--m4:#8CA8F3;--on:#1B1220;--ok:#6CCB9D;--bad:#F29186;--shadow:0 1px 2px rgb(0 0 0/.4),0 8px 24px -12px rgb(0 0 0/.6);color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:16px/1.55 "Inter Tight",system-ui,sans-serif;padding-inline:16px;padding-block:14px 40px;margin:0}
+.app{max-width:1040px;margin:0 auto}
+.disp{font-family:Fraunces,Georgia,serif;font-optical-sizing:auto;letter-spacing:-.01em}
+h1{font:700 clamp(28px,5vw,44px)/1.05 Fraunces,Georgia,serif;margin:0 0 10px;text-wrap:balance;letter-spacing:-.02em}
+h2{font:700 clamp(21px,3vw,27px)/1.2 Fraunces,Georgia,serif;margin:0 0 8px;text-wrap:balance}
+h3{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin:0 0 10px;font-weight:600}
+p{margin:0 0 10px}.mut{color:var(--mut)}.sm{font-size:14px}
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);margin-inline:-16px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:8px}.brand b{font:700 17px Fraunces,serif}
+.logo{width:26px;height:26px;border-radius:8px;background:conic-gradient(from 200deg,var(--m1),var(--m3),var(--m2),var(--m4),var(--m1))}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.tabs button{flex:none;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:7px 14px;border-radius:999px;font:500 14px inherit;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .15s,border-color .15s}
+.tabs button i{width:9px;height:9px;border-radius:50%;background:var(--c,var(--acc))}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tabs button.done::after{content:"✓";font-size:12px;color:var(--ok)}
+.tabs button[aria-selected=true].done::after{color:var(--paper)}
+main{padding-top:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow);min-width:0}
+.tag{display:inline-flex;align-items:center;gap:6px;color:var(--on);background:var(--c,var(--acc));border-radius:999px;padding:3px 12px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+.hero{border-radius:22px;padding:clamp(20px,5vw,40px);margin-bottom:16px;background:var(--ink);color:var(--paper);position:relative;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;background:
+ radial-gradient(60% 80% at 100% 0,var(--m1),transparent 60%),radial-gradient(50% 70% at 0 100%,var(--m2),transparent 60%),radial-gradient(40% 60% at 70% 100%,var(--m3),transparent 60%)}
+.hero p{max-width:56ch;opacity:.92}
+.hero .pat{position:absolute;right:-20px;bottom:-30px;width:260px;opacity:.18;z-index:-1}
+.btn{border:1px solid var(--c,var(--acc));background:var(--c,var(--acc));color:var(--on);border-radius:10px;padding:10px 18px;font:600 15px inherit;font-family:inherit;cursor:pointer;transition:transform .12s,filter .12s}
+.btn:hover{filter:brightness(1.07)}.btn:active{transform:translateY(1px)}
+.btn.o{background:transparent;color:var(--c,var(--acc))}.btn.g{background:var(--soft);border-color:var(--line);color:var(--ink)}
+.btn.sm{padding:6px 12px;font-size:13px}
+:focus-visible{outline:2px solid var(--c,var(--acc));outline-offset:2px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.mcard{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:16px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.mcard::before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:var(--c)}
+.mcard ol{margin:0;padding-left:20px;font-size:14px}
+.plan{display:flex;flex-wrap:wrap;gap:6px}.pill{display:inline-flex;gap:6px;font-size:13px;border-radius:999px;padding:2px 11px;border:1px solid var(--line);color:var(--mut);background:var(--panel)}.pill b{color:var(--c,var(--ink))}
+table{border-collapse:collapse;width:100%}td,th{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;font-size:14px;vertical-align:top}
+/* studio layout */
+.studio{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:760px){.studio{grid-template-columns:1fr}}
+.lib{position:sticky;top:112px}
+@media (max-width:760px){.lib{position:static}}
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:6px}
+.chip{border:1.5px solid var(--line);border-radius:10px;background:var(--paper);padding:4px;cursor:pointer;display:flex;flex-direction:column;gap:3px;font:inherit;color:var(--ink);align-items:stretch;min-width:0}
+.chip:hover{border-color:var(--c)}.chip svg,.chip .sw{width:100%;height:38px;border-radius:6px;display:block}.chip .sw{border:1px solid var(--line)}
+.chip span{font-size:11px;line-height:1.15;text-align:center;color:var(--mut)}
+.seg{display:flex;gap:4px;flex-wrap:wrap}.seg button{min-width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:inherit;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--c);color:var(--on);border-color:var(--c)}
+.board{position:relative;aspect-ratio:4/3;background:
+ linear-gradient(var(--line) 1px,transparent 1px) 0 0/10% 10%,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/10% 10%,var(--paper);border:1.5px dashed var(--line);border-radius:14px;overflow:hidden;touch-action:none;user-select:none}
+.tile{position:absolute;border-radius:6px;box-shadow:0 6px 14px -6px rgb(0 0 0/.35);cursor:grab;overflow:hidden;border:2px solid #fff;touch-action:none;transition:box-shadow .15s}
+.tile[data-sel=true]{outline:3px solid var(--c);outline-offset:1px;box-shadow:0 10px 22px -6px rgb(0 0 0/.45)}
+.tile svg{width:100%;height:100%;display:block}
+.tile:active{cursor:grabbing}
+.board .empty{position:absolute;inset:0;display:grid;place-items:center;color:var(--mut);text-align:center;padding:16px;font-size:14px}
+.tb{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.meter{display:grid;grid-template-columns:minmax(0,130px) 1fr 44px;gap:6px 10px;align-items:center;font-size:13px;margin:4px 0}
+.bar{height:10px;background:var(--soft);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--c,var(--acc));border-radius:6px;transition:width .4s}
+.pal{display:flex;height:34px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}.pal i{flex:1}
+.fld{display:flex;flex-direction:column;gap:4px;margin:10px 0;font-size:14px}.fld b{font-weight:600}
+textarea,input[type=text]{width:100%;font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+textarea{min-height:60px;resize:vertical}
+textarea:focus,input:focus{border-color:var(--c,var(--acc));outline:none}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:7px 4px;cursor:pointer;border-radius:8px}
+.opt:hover{background:var(--soft)}
+.opt input{margin-top:4px;width:18px;height:18px;flex:none;accent-color:var(--c,var(--acc))}
+.ord{display:flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:6px 8px;margin-bottom:6px;background:var(--paper)}
+.ord b{width:26px;text-align:center;color:var(--c)}.ord span{flex:1;min-width:0;font-size:14px}.ord button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;width:34px;height:34px;cursor:pointer;font:inherit}
+.rng{display:grid;grid-template-columns:minmax(0,120px) 1fr 40px;gap:8px;align-items:center;font-size:14px;margin:8px 0}
+input[type=range]{width:100%;accent-color:var(--c)}
+.stage{background:var(--soft);border-radius:14px;padding:12px;display:grid;place-items:center}
+.stage svg{max-width:100%;height:auto}
+.fb{background:var(--soft);border-radius:12px;padding:14px;margin-top:12px}
+.big{font:700 44px Fraunces,Georgia,serif;font-variant-numeric:tabular-nums;line-height:1}
+.good{color:var(--ok)}.badc{color:var(--bad)}
+.pin{cursor:pointer}.pin circle{transition:fill .2s}
+.slide{aspect-ratio:16/9;border-radius:12px;padding:5%;display:flex;flex-direction:column;justify-content:center;gap:2%;box-shadow:var(--shadow);overflow:hidden;position:relative}
+.slide h4{font:700 clamp(18px,3.4vw,30px)/1.1 Fraunces,serif;margin:0}.slide p{margin:0;font-size:clamp(12px,1.9vw,17px)}
+.tm{font:700 40px Fraunces,Georgia,serif;font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--mut)}.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.18s}
+</style>
+<div class="app"><header class="top"><div class="brand"><span class="logo"></span><b>Estetik madaniyat studiyasi</b></div><nav class="tabs" id="tabs" role="tablist" aria-label="Bo‘limlar"></nav></header><main id="view"></main>
+<p class="mut sm" style="margin-top:24px">Metodlar: Suvonova M.Yu., “Oliy ta’limda talabalarning estetik madaniyatini rivojlantirish metodikasi (Dizayn misolida)”, PhD dissertatsiyasi, BDTU, 2026. Mashg‘ulotlar va 0–3 ball shkalasi “Moda industriyasi” o‘quv qo‘llanmasi uchun moslashtirilgan. Avtomatik baho o‘z-o‘zini tekshirish vositasi; yakuniy bahoni o‘qituvchi qo‘yadi.</p></div>
+<script>
+const C=[['Kognitiv-estetik','estetik bilim va mezonlardan to‘g‘ri foydalanish'],['Emotsional-qadriyatli','manba va qadriyatlarga ongli munosabat'],['Ijodiy-loyihaviy','g‘oya, kompozitsiya, rang va shakl yechimi'],['Refleksiv-baholovchi','qarorni asoslash, kuchli va zaif tomonlarni ko‘rish']];
+const MET=[
+{id:'moodboard',n:'Moodboard-laboratoriya',c:'var(--m1)',core:'Mavzu bo‘yicha rang, naqsh, siluet va materialni bitta konseptual taxtada jamlash va har bir tanlovni asoslash.',steps:['Mavzu va maqsadni aniqlash','Vizual manbalarni yig‘ish','Saralash va tahlil qilish','Taxtani yig‘ish','Har bir elementni asoslash'],plan:[['5','mavzu va qoidalar'],['15','taxtani yig‘ish'],['15','asoslash'],['10','guruhda muhokama']],tool:'Sudrab joylanadigan taxta, rang uyg‘unligi tahlili'},
+{id:'transformatsiya',n:'Dizayn-transformatsiya',c:'var(--m2)',core:'Milliy manba nusxalanmaydi: tahlil qilinadi, asosiy belgilari ajratiladi, uslublashtiriladi va zamonaviy mahsulotga qo‘llanadi.',steps:['Milliy manbani tanlash','Estetik-tahliliy o‘rganish','Asosiy badiiy belgilarni ajratish','Uslublashtirish va soddalashtirish','Eskiz variantlarini yaratish','Zamonaviy mahsulotga qo‘llash','Natijani taqdim etish va asoslash','Refleksiv baholash'],plan:[['5','manba bilan tanishish'],['10','belgilarni ajratish'],['20','naqsh laboratoriyasi'],['10','taqdim, refleksiya']],tool:'Jonli naqsh generatori va libos maketi'},
+{id:'ekspertiza',n:'Estetik ekspertiza',c:'var(--m3)',core:'Dizayn mahsulotini “yoqdi / yoqmadi” emas, aniq estetik mezonlar va dalillar asosida ekspert sifatida baholash.',steps:['Tayyorgarlik: obyekt va mezonlar','Kuzatish va dastlabki idrok','Analitik baholash','Guruhiy muhokama','Xulosa va tavsiya'],plan:[['5','mezonlarni tushuntirish'],['10','kuzatish, baholash'],['15','dalil va takliflar'],['15','muhokama, xulosa']],tool:'Eskiz ustida belgilar, ekspert oralig‘i bilan solishtirish'},
+{id:'pitch',n:'Loyiha-pitch',c:'var(--m4)',core:'Dizayn g‘oyasini 3–5 daqiqada qisqa, ishonchli va vizual asoslangan taqdimot orqali himoya qilish.',steps:['Mavzu va estetik maqsad','Manbalarni o‘rganish','Konseptual yechim','Taqdimot materiallarini tizimlash','3–5 daqiqalik taqdimot','Savol-javob va fikr-mulohaza'],plan:[['5','mavzu va maqsad'],['15','slaydlarni tayyorlash'],['15','taqdimotlar'],['10','savol-javob']],tool:'Slayd konstruktori, taymer, savol-javob'}];
+const ALIAS={ch3:'ekspertiza',ch5:'ekspertiza',ch7:'ekspertiza',ch11:'ekspertiza',ch6:'transformatsiya',ch8:'moodboard',ch10:'moodboard',ch9:'pitch',ch12:'pitch'};
+const S={mb:{tiles:[],sel:null,why:{},n:0},tr:{simp:0,rep:4,scale:100,rot:0,mirror:false,pal:0,place:'butun',ord:null,keep:[],sty:[],att:null,ref:''},ex:{rate:{},dal:{},rec:[],concl:'',cur:0,after:false},pt:{sl:[{},{},{},{},{}],cur:0,pal:['#7A2A4C','#E0A526','#F7F3EE'],script:'',qa:{}},res:{},name:''};
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x)),r1=x=>Math.round(x*10)/10;
+const words=t=>(t.trim().match(/\S+/g)||[]).length;
+try{const j=JSON.parse(localStorage.getItem('estetika-v3')||'null');if(j){S.res=j.res||{};S.name=j.name||''}}catch(e){}
+const save=()=>{try{localStorage.setItem('estetika-v3',JSON.stringify({res:S.res,name:S.name}))}catch(e){}};
+/* ---- rang ilmi: OKLab/OKLCH, uyg‘unlik, kontrast ---- */
+function rgb(hex){const h=hex.replace('#','');return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)/255)}
+const lin=c=>c<=.04045?c/12.92:Math.pow((c+.055)/1.055,2.4);
+function lch(hex){const [r,g,b]=rgb(hex).map(lin);
+ const l=Math.cbrt(.4122214708*r+.5363325363*g+.0514459929*b),m=Math.cbrt(.2119034982*r+.6806995451*g+.1073969566*b),s=Math.cbrt(.0883024619*r+.2817188376*g+.6299787005*b);
+ const L=.2104542553*l+.793617785*m-.0040720468*s,a=1.9779984951*l-2.428592205*m+.4505937099*s,bb=.0259040371*l+.7827717662*m-.808675766*s;
+ return {L,C:Math.hypot(a,bb),h:(Math.atan2(bb,a)*180/Math.PI+360)%360}}
+const lum=hex=>{const [r,g,b]=rgb(hex).map(lin);return .2126*r+.7152*g+.0722*b};
+const cr=(a,b)=>{const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)};
+const hd=(a,b)=>{const d=Math.abs(a-b)%360;return d>180?360-d:d};
+function harmony(hexes){const ls=hexes.map(lch),ch=ls.filter(x=>x.C>.05),neu=ls.length-ch.length;
+ if(!hexes.length)return {name:'—',score:0,ch:0,neu:0};
+ if(!ch.length)return {name:'Neytral palitra',score:2,ch:0,neu};
+ const hs=ch.map(x=>x.h).sort((a,b)=>a-b);let gap=0;
+ for(let i=0;i<hs.length;i++){const d=((hs[(i+1)%hs.length]-hs[i])+360)%360||360;gap=Math.max(gap,hs.length===1?360:d)}
+ const spread=360-gap;
+ if(spread<=55)return {name:ch.length===1?'Monoxrom':'Analog',score:3,ch:ch.length,neu};
+ if(ch.length>=2){let best=false;for(const a of hs)for(const b of hs)if(hd(a,b)>=145&&hd(a,b)<=215&&hs.every(h=>hd(h,a)<=40||hd(h,b)<=40))best=true;if(best)return {name:'Komplementar',score:3,ch:ch.length,neu}}
+ if(ch.length>=3){for(const a of hs){const t=[(a+120)%360,(a+240)%360];if(t.every(x=>hs.some(h=>hd(h,x)<=35))&&hs.every(h=>[a,...t].some(x=>hd(h,x)<=35)))return {name:'Triada',score:3,ch:ch.length,neu}}}
+ return {name:'Ko‘p rangli (uyg‘unsiz)',score:ch.length<=3?2:1,ch:ch.length,neu}}
+const _pm={};function perm(k,n){if(!_pm[k]){const a=[...Array(n).keys()];for(let i=n-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}_pm[k]=a}return _pm[k]}
+function argScore(t){const ws=(t.toLowerCase().match(/[a-zʻ‘’'oʼ]+/g)||[]),ds=new Set(ws);if(ds.size<6||ds.size/Math.max(ws.length,1)<.6)return 0;const L=t.trim().length,a=/(chunki|uchun|sababli|tufayli|bois|shu sabab|ramz|ifoda|mos|uyg‘un|uyg'un|bog‘la|ta’sir|ta'sir)/i.test(t);return L>=60&&a?3:L>=35&&a?2:L>=20?1:0}
+function refScore(t){const w_=(t.toLowerCase().match(/\S+/g)||[]);if(new Set(w_).size<6)return 0;const p=/(kuch|yaxshi|muvaffaq|uyg‘un|uyg'un)/i.test(t),n=/(zaif|kamchilik|takomil|yaxshilash|o‘zgartir|o'zgartir|muammo)/i.test(t),L=t.trim().length;return L>=60&&p&&n?3:L>=30&&(p||n)?2:L>=15?1:0}
+function levelOf(s){return s>=10?['Yuqori daraja','Ish dalillangan va mustaqil bajarilgan.']:s>=6?['O‘rta daraja','Asosiy mezonlar bajarilgan; dalillarni kuchaytiring.']:['Boshlang‘ich daraja','Bosqichlarni qayta ko‘rib chiqib, mashg‘ulotni takrorlang.']}
+/* ---- radar ---- */
+function radar(v,col){const R=84,cx=130,cy=116,pt=(i,r)=>{const a=-Math.PI/2+i*Math.PI/2;return [cx+Math.cos(a)*r,cy+Math.sin(a)*r]};
+ const ring=k=>[0,1,2,3].map(i=>pt(i,R*k/3).join(',')).join(' ');
+ const lab=[['Kognitiv',0,-1],['Emotsional',1,0],['Ijodiy',0,1],['Refleksiv',-1,0]];
+ return `<svg viewBox="-30 0 340 236" width="310" role="img" aria-label="Mezonlar radari">${[1,2,3].map(k=>`<polygon points="${ring(k)}" fill="none" stroke="var(--line)"/>`).join('')}
+ ${[0,1,2,3].map(i=>`<line x1="${cx}" y1="${cy}" x2="${pt(i,R)[0]}" y2="${pt(i,R)[1]}" stroke="var(--line)"/>`).join('')}
+ <polygon points="${v.map((x,i)=>pt(i,R*clamp(x,0,3)/3).join(',')).join(' ')}" fill="${col}" fill-opacity=".25" stroke="${col}" stroke-width="2.5"/>
+ ${v.map((x,i)=>`<circle cx="${pt(i,R*clamp(x,0,3)/3)[0]}" cy="${pt(i,R*clamp(x,0,3)/3)[1]}" r="4" fill="${col}"/>`).join('')}
+ ${lab.map(([t,dx,dy],i)=>`<text x="${cx+dx*(R+14)}" y="${cy+dy*(R+14)+(dy>0?10:dy<0?-2:4)}" text-anchor="${dx>0?'start':dx<0?'end':'middle'}" font-size="12" fill="var(--mut)">${t}</text>`).join('')}</svg>`}
+function resBox(res,fb,col){const t=r1(res.reduce((a,b)=>a+b,0)),[lv,tx]=levelOf(t);
+ return `<div class="fb"><div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center"><div>${radar(res,col||'var(--acc)')}</div><div style="flex:1;min-width:200px"><h3>Avtomatik baho</h3><div class="big">${t}<span class="mut" style="font-size:20px">/12</span></div><p style="margin-top:8px"><b>${lv}.</b> ${tx}</p><p class="sm mut">Natija “Yakuniy baho” bo‘limiga qo‘shildi.</p></div></div>
+ ${C.map((c,i)=>`<div class="meter"><span>${c[0]}</span><div class="bar"><i style="width:${res[i]/3*100}%;--c:${col}"></i></div><b>${res[i]}</b></div><p class="sm mut" style="margin:0 0 8px">${fb[i]}</p>`).join('')}</div>`}
+function finish(id,res,fb,col){S.res[id]=res;save();$('#out').innerHTML=resBox(res,fb,col);$('#out').scrollIntoView({behavior:'smooth',block:'nearest'});$$('.tabs button').forEach(b=>{if(S.res[b.dataset.id])b.classList.add('done')})}
+/* ---- eskiz kutubxonasi ---- */
+const sv=i=>`<svg viewBox="0 0 80 46" preserveAspectRatio="xMidYMid slice"><rect width="80" height="46" fill="#F4EFE6"/>${i}</svg>`;
+const PAT={
+p1:sv('<g fill="#A3203F">'+[0,1,2,3].map(k=>`<path d="M${10+k*20} 38 C ${2+k*20} 24, ${14+k*20} 8, ${12+k*20} 6 C ${24+k*20} 14, ${22+k*20} 32, ${10+k*20} 38Z"/>`).join('')+'</g>'),
+p2:sv('<polyline points="0,12 10,24 20,12 30,24 40,12 50,24 60,12 70,24 80,12" fill="none" stroke="#1F3F8F" stroke-width="4"/><polyline points="0,32 10,44 20,32 30,44 40,32 50,44 60,32 70,44 80,32" fill="none" stroke="#E0A526" stroke-width="4"/>'),
+p3:sv('<g fill="none" stroke="#12747F" stroke-width="2.5"><rect x="14" y="8" width="30" height="30"/><rect x="14" y="8" width="30" height="30" transform="rotate(45 29 23)"/><circle cx="62" cy="23" r="9"/></g>'),
+p4:sv('<g stroke="#241C2B" stroke-width="2">'+[10,20,30,40,50,60,70].map(x=>`<line x1="${x}" y1="4" x2="${x}" y2="42"/>`).join('')+'</g>'),
+s1:sv('<rect x="30" y="4" width="20" height="38" fill="#8C8C93"/>'),s2:sv('<path d="M16 6 H64 L72 42 H8Z" fill="#8C8C93"/>'),s3:sv('<path d="M30 4 H50 L50 20 L62 42 H18 L30 20Z" fill="#8C8C93"/>'),
+m1:sv('<defs><linearGradient id="gm" x1="0" x2="1"><stop offset="0" stop-color="#E9D8C3"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#D9C3A8"/></linearGradient></defs><rect width="80" height="46" fill="url(#gm)"/>'),
+m2:sv('<rect width="80" height="46" fill="#EFE7DA"/>'+[6,14,22,30,38].map(y=>`<line x1="0" x2="80" y1="${y}" y2="${y}" stroke="#D5C9B6"/>`).join('')),
+m3:sv('<rect width="80" height="46" fill="#1F3F8F"/><g fill="none" stroke="#E0A526" stroke-width="2"><circle cx="20" cy="23" r="9"/><circle cx="40" cy="23" r="9"/><circle cx="60" cy="23" r="9"/></g>'),
+m4:sv('<rect width="80" height="46" fill="#B9C3A7"/>'+[8,20,32,44,56,68].map(x=>`<circle cx="${x}" cy="${12+(x%24)}" r="3" fill="#8D9A78"/>`).join(''))};
+const MOTIF=(simp,p)=>{let g='';
+ if(simp<20)g+=`<path d="M0 -42 C 28 -22, 30 22, 0 42 C -30 22, -28 -22, 0 -42Z" fill="none" stroke="${p[2]}" stroke-width="1.4"/>`;
+ g+=`<path d="M-2 30 C -26 14, -22 -18, 6 -30 C 14 -6, 10 16, -2 30Z" fill="${p[0]}"/>`;
+ if(simp<70)g+=`<path d="M-2 20 C -14 10, -12 -10, 4 -20 C 8 -6, 6 8, -2 20Z" fill="${p[1]}"/>`;
+ if(simp<45)g+=[[-8,2],[-3,-8],[2,-16]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.2" fill="${p[2]}"/>`).join('');
+ if(simp<25)g+=`<path d="M-14 18 C -20 6, -18 -8, -8 -18" fill="none" stroke="${p[2]}" stroke-width="1.2"/><path d="M4 26 C 10 14, 10 4, 8 -6" fill="none" stroke="${p[3]}" stroke-width="1"/>`;
+ return g};
+const DRESS='M92 20 H148 L156 70 L172 70 L186 150 L204 280 H36 L54 150 L68 70 L84 70Z';
+
+const ITEMS=[
+['Rang',[['c1','Indigo','#1F3F8F','n'],['c2','Yoqut','#A3203F','n'],['c3','Feruza','#12747F','n'],['c4','Za’faron','#E0A526','n'],['c5','Kul rang','#8C8C93','z'],['c6','Fil suyagi','#F4EFE6','z']]],
+['Naqsh',[['p1','Bodom','','n'],['p2','Ikat zigzagi','','n'],['p3','Girih','','n'],['p4','Minimal chiziq','','z']]],
+['Siluet',[['s1','To‘g‘ri kesim','','z'],['s2','Oversayz','','z'],['s3','Belbog‘li uzun','','n']]],
+['Material',[['m1','Ipak atlas','','n'],['m2','Paxta-adras','','n'],['m3','Zardo‘zlik','','n'],['m4','Eko mato','','z']]]];
+const ALLI={};ITEMS.forEach(([cat,l])=>l.forEach(x=>ALLI[x[0]]={id:x[0],name:x[1],col:x[2],tag:x[3],cat}));
+const ref2=r=>r.startsWith('cc')?{id:r,name:'Maxsus rang '+r.slice(2),col:r.slice(2),tag:'z',cat:'Rang'}:ALLI[r];
+function viewMood(){const s=S.mb;
+ return `<div class="card"><span class="tag" style="--c:var(--m1)">Mashg‘ulot 1 · Moodboard-laboratoriya</span><h2>“Milliy naqshlar asosida zamonaviy libos obrazi”</h2>
+ <p class="mut">Kutubxonadan elementlarni taxtaga qo‘shing (5–7 ta), sudrab joylashtiring, so‘ng har bir tanlovni asoslang. Taxta milliy manba va zamonaviy yechimni uyg‘unlashtirishi, ranglari esa bir-biriga mos bo‘lishi kerak.</p></div>
+ <div class="studio" style="--c:var(--m1)"><div class="card lib"><h3>Kutubxona</h3>${ITEMS.map(([cat,l])=>`<p class="sm" style="margin:8px 0 4px"><b>${cat}</b></p><div class="chips">${l.map(x=>`<button class="chip" data-add="${x[0]}" aria-label="${cat}: ${x[1]} qo‘shish">${x[2]?`<div class="sw" style="background:${x[2]}"></div>`:PAT[x[0]]}<span>${x[1]}</span></button>`).join('')}</div>`).join('')}
+ <p class="sm" style="margin:12px 0 4px"><b>Maxsus rang</b></p><div style="display:flex;gap:8px;align-items:center"><input type="color" id="cc" value="#7A2A4C" aria-label="Rang tanlash" style="width:44px;height:36px;border:none;background:none;padding:0"><button class="btn g sm" id="ccb">Qo‘shish</button></div></div>
+ <div><div class="card"><div class="board" id="board" aria-label="Moodboard taxtasi"></div>
+ <div class="tb"><button class="btn g sm" id="bigger">Kattaroq</button><button class="btn g sm" id="smaller">Kichikroq</button><button class="btn g sm" id="front">Oldinga</button><button class="btn g sm" id="del">O‘chirish</button><button class="btn g sm" id="clr">Tozalash</button></div>
+ <p class="sm mut" id="hint">Elementni sudrang. Klaviatura: tanlangan elementni strelkalar bilan siljiting.</p></div>
+ <div class="card"><h3>Jonli tahlil</h3><div id="an"></div></div>
+ <div class="card"><h3>Asoslash: nima uchun aynan shu?</h3><div id="why"></div>
+ <button class="btn" id="fin">Yakunlash va baholash</button><div id="out"></div></div></div></div>`}
+function bindMood(){const s=S.mb,board=$('#board');
+ const draw=()=>{board.innerHTML=s.tiles.length?s.tiles.map(t=>{const a=ref2(t.ref);return `<div class="tile" tabindex="0" data-u="${t.u}" data-sel="${s.sel===t.u}" style="left:${t.x}%;top:${t.y}%;width:${t.w}%;aspect-ratio:1;z-index:${t.z};--c:var(--m1)" aria-label="${a.cat}: ${a.name}">${a.col?`<div style="width:100%;height:100%;background:${a.col}"></div>`:PAT[a.id]}</div>`}).join(''):'<div class="empty">Taxta bo‘sh. Chapdagi kutubxonadan element qo‘shing.</div>';an();why()};
+ const add=ref=>{if(s.tiles.length>=7)return;const n=s.tiles.length;s.tiles.push({u:++s.n,ref,x:8+(n*14)%58,y:8+(n*19)%52,w:22,z:n+1});s.sel=s.n;draw()};
+ $$('[data-add]').forEach(b=>b.onclick=()=>add(b.dataset.add));
+ $('#ccb').onclick=()=>add('cc'+$('#cc').value.toUpperCase());
+ const cur=()=>s.tiles.find(t=>t.u===s.sel);
+ $('#bigger').onclick=()=>{const t=cur();if(t){t.w=Math.min(46,t.w+4);draw()}};$('#smaller').onclick=()=>{const t=cur();if(t){t.w=Math.max(12,t.w-4);draw()}};
+ $('#front').onclick=()=>{const t=cur();if(t){t.z=Math.max(...s.tiles.map(x=>x.z))+1;draw()}};
+ $('#del').onclick=()=>{s.tiles=s.tiles.filter(t=>t.u!==s.sel);s.sel=null;draw()};$('#clr').onclick=()=>{s.tiles=[];s.sel=null;draw()};
+ let drag=null;
+ board.onpointerdown=e=>{const el=e.target.closest('.tile');if(!el)return;const u=+el.dataset.u;s.sel=u;const t=cur(),r=board.getBoundingClientRect();drag={u,dx:(e.clientX-r.left)/r.width*100-t.x,dy:(e.clientY-r.top)/r.height*100-t.y};board.setPointerCapture(e.pointerId);$$('.tile').forEach(x=>x.dataset.sel=(+x.dataset.u===u))};
+ board.onpointermove=e=>{if(!drag)return;const t=cur(),r=board.getBoundingClientRect(),h=t.w*r.width/r.height;t.x=clamp((e.clientX-r.left)/r.width*100-drag.dx,0,100-t.w);t.y=clamp((e.clientY-r.top)/r.height*100-drag.dy,0,100-h);const el=board.querySelector(`[data-u="${t.u}"]`);el.style.left=t.x+'%';el.style.top=t.y+'%'};
+ board.onpointerup=board.onpointercancel=()=>{if(drag){drag=null;an()}};
+ board.onkeydown=e=>{const t=cur();if(!t)return;const d={ArrowLeft:[-2,0],ArrowRight:[2,0],ArrowUp:[0,-2],ArrowDown:[0,2]}[e.key];if(d){e.preventDefault();t.x=clamp(t.x+d[0],0,100-t.w);t.y=clamp(t.y+d[1],0,100-t.w*4/3);draw();board.querySelector(`[data-u="${t.u}"]`)?.focus()}};
+ function metrics(){const A=s.tiles.map(t=>({t,a:ref2(t.ref)}));
+  const hex=A.filter(x=>x.a.col).map(x=>x.a.col),H=harmony(hex);
+  let con=null;if(hex.length>=2){let mx=1;hex.forEach(a=>hex.forEach(b=>{mx=Math.max(mx,cr(a,b))}));con=mx}
+  // kompozitsiya: taxta 4:3 -> tile balandligi (%) = w*4/3
+  const R=A.map(({t})=>({x:t.x,y:t.y,w:t.w,h:t.w*4/3})),area=R.reduce((a,r)=>a+r.w*r.h,0);
+  let cx=0,cy=0;R.forEach(r=>{cx+=(r.x+r.w/2)*r.w*r.h;cy+=(r.y+r.h/2)*r.w*r.h});if(area){cx/=area;cy/=area}
+  const off=area?Math.hypot(cx-50,cy-50):99;let ov=0;for(let i=0;i<R.length;i++)for(let j=i+1;j<R.length;j++){const a=R[i],b=R[j];ov+=Math.max(0,Math.min(a.x+a.w,b.x+b.w)-Math.max(a.x,b.x))*Math.max(0,Math.min(a.y+a.h,b.y+b.h)-Math.max(a.y,b.y))}
+  const ovf=area?ov/area:1,cov=area/10000;
+  const bal=off<10?1:off<20?.6:.3,ovs=ovf<.15?1:ovf<.35?.6:.3,cvs=cov>=.3&&cov<=.85?1:.6,comp=r1(3*(bal*.4+ovs*.3+cvs*.3));
+  const n=A.filter(x=>x.a.tag==='n').length,z=A.length-n,cats=new Set(A.map(x=>x.a.cat)).size;
+  return {A,hex,H,con,off,ovf,cov,comp,n,z,cats}}
+ function an(){const m=metrics(),el=$('#an');if(!el)return;if(!s.tiles.length){el.innerHTML='<p class="mut sm">Element qo‘shilgach tahlil shu yerda paydo bo‘ladi.</p>';return}
+  el.innerHTML=`${m.hex.length?`<div class="pal">${m.hex.map(h=>`<i style="background:${h}"></i>`).join('')}</div>`:''}
+  <div class="meter"><span>Rang uyg‘unligi</span><div class="bar"><i style="width:${m.H.score/3*100}%;--c:var(--m1)"></i></div><b>${m.H.score}</b></div><p class="sm mut" style="margin:0 0 6px">Sxema: <b>${m.H.name}</b> (xromatik: ${m.H.ch}, neytral: ${m.H.neu})${m.con?`; eng yuqori kontrast ${r1(m.con)}:1`:''}</p>
+  <div class="meter"><span>Kompozitsiya</span><div class="bar"><i style="width:${m.comp/3*100}%;--c:var(--m1)"></i></div><b>${m.comp}</b></div><p class="sm mut" style="margin:0 0 6px">Markazdan og‘ish ${r1(m.off)}%, ustma-ust tushish ${Math.round(m.ovf*100)}%, taxta to‘lishi ${Math.round(m.cov*100)}% (maqbul 30–85%).</p>
+  <div class="meter"><span>Milliy / zamonaviy</span><div class="bar"><i style="width:${m.n+m.z?m.n/(m.n+m.z)*100:0}%;--c:var(--m1)"></i></div><b>${m.n}/${m.z}</b></div><p class="sm mut" style="margin:0">Toifalar: ${m.cats}/4. Milliy va zamonaviy elementlar kamida 2 tadan bo‘lsa, uyg‘unlik kuchli.</p>`}
+ function why(){const el=$('#why');if(!el)return;el.innerHTML=s.tiles.length?s.tiles.map(t=>{const a=ref2(t.ref);return `<div class="fld"><b>${a.cat}: ${a.name}</b><textarea data-w="${t.ref}" placeholder="Masalan: chunki …">${esc(s.why[t.ref]||'')}</textarea></div>`}).join(''):'<p class="mut sm">Avval taxtaga elementlar qo‘shing.</p>';
+  $$('[data-w]').forEach(t=>t.oninput=()=>{s.why[t.dataset.w]=t.value})}
+ draw();
+ $('#fin').onclick=()=>{const m=metrics();if(s.tiles.length<5){$('#out').innerHTML='<div class="fb badc">Kamida 5 ta element qo‘shing.</div>';return}
+  const kog=[0,0,1,2,3][m.cats],emo=m.n>=2&&m.z>=2?3:m.n>=1&&m.z>=1?2:1,ijo=r1((m.H.score+m.comp)/2);
+  const sc=s.tiles.map(t=>argScore(s.why[t.ref]||'')),ref=r1(sc.reduce((a,b)=>a+b,0)/sc.length);
+  finish('moodboard',[kog,emo,ijo,ref],[`${m.cats}/4 toifa qamrab olindi (rang, naqsh, siluet, material).`,`Milliy: ${m.n}, zamonaviy: ${m.z}.`,`Rang sxemasi: ${m.H.name} (${m.H.score}/3); kompozitsiya: ${m.comp}/3. Ijodiy ball ikkalasining o‘rtachasi.`,`Asoslashlar o‘rtacha ${ref}/3: har izohda sabab (“chunki”, “uchun”) va 35+ belgi bo‘lsin.`],'var(--m1)')}}
+
+const TSTEPS=['Milliy manbani tanlash','Estetik-tahliliy o‘rganish','Asosiy badiiy belgilarni ajratish','Uslublashtirish va soddalashtirish','Eskiz variantlarini yaratish','Zamonaviy mahsulotga qo‘llash','Natijani taqdim etish va asoslash','Refleksiv baholash'];
+const KEEP=[['Takrorlanish ritmi',1],['Bodom shakli va yo‘nalishi',1],['Rang kontrasti',1],['Ramziy ma’nosi',1],['Naqshning barcha mayda detallari',0],['Tayyor naqshni o‘zgarishsiz ko‘chirish',0],['Tasodifiy joylashuv',0]];
+const STY=[['Ortiqcha mayda detallarni olib tashlash',1],['Zamonaviy palitraga moslashtirish',1],['Masshtabni libos detaliga moslash',1],['Naqshni 100% saqlab, hajmini o‘zgartirmaslik',0],['Ranglarni tasodifiy almashtirish',0]];
+const ATT=[['Manbani tahlil qilib, ma’nosini hurmat bilan qayta talqin qilaman.',3],['Ma’nosiga e’tibor bermay, faqat ranglarini yangilayman.',1],['Chiroyli ko‘rinishi uchun uni aynan ko‘chiraman.',0]];
+const PALS=[['Asl (atlas-adras)',['#A3203F','#1F3F8F','#E0A526','#F4EFE6']],['Zamonaviy: siyoh + oxra',['#241C2B','#B4601A','#7A2A4C','#F7F3EE']],['Monoxrom kul',['#3A3A40','#8C8C93','#C9C9CE','#FFFFFF']],['Feruza + za’faron',['#12747F','#E0A526','#F4EFE6','#2A2230']]];
+function dressSVG(t,uid){const p=PALS[t.pal][1],cell=240/t.rep,k=cell/58,mir=t.mirror;
+ const mot=(f)=>`<g transform="translate(${f},${cell*.85}) scale(${k})">${MOTIF(t.simp,p)}</g>`;
+ const pw=mir?cell*2:cell,body=mir?`<g transform="translate(${cell/2},${cell*.85}) scale(${k})">${MOTIF(t.simp,p)}</g><g transform="translate(${cell*1.5},${cell*.85}) scale(${-k},${k})">${MOTIF(t.simp,p)}</g>`:mot(cell/2);
+ const zone=t.place==='etak'?'<rect x="0" y="205" width="240" height="80"/>':t.place==='yoqa'?'<rect x="70" y="18" width="100" height="62"/><rect x="0" y="125" width="240" height="14"/>':'<rect x="0" y="0" width="240" height="300"/>';
+ return `<svg viewBox="0 0 240 300" width="240" role="img" aria-label="Libos maketi"><defs><pattern id="pt${uid}" width="${pw}" height="${cell*1.7}" patternUnits="userSpaceOnUse" patternTransform="rotate(${t.rot}) scale(${t.scale/100})">${body}</pattern><clipPath id="zc${uid}">${zone}</clipPath></defs>
+ <path d="${DRESS}" fill="${p[3]}" stroke="#00000033"/><path d="${DRESS}" fill="#00000010" transform="translate(4,5)" opacity=".5"/><path d="${DRESS}" fill="${p[3]}"/><g clip-path="url(#zc${uid})"><path d="${DRESS}" fill="url(#pt${uid})"/></g><path d="${DRESS}" fill="none" stroke="#00000033" stroke-width="1.5"/></svg>`}
+function viewTrans(){const t=S.tr;if(!t.ord)t.ord=[3,0,6,2,7,1,5,4];
+ const R=(k,l,mn,mx,u)=>`<div class="rng"><label for="r_${k}">${l}</label><input type="range" id="r_${k}" data-p="${k}" min="${mn}" max="${mx}" value="${t[k]}"><b id="v_${k}">${t[k]}${u}</b></div>`;
+ return `<div class="card"><span class="tag" style="--c:var(--m2)">Mashg‘ulot 2 · Dizayn-transformatsiya</span><h2>Atlas-adrasdagi bodom naqshini zamonaviy libosga aylantiring</h2>
+ <p class="mut">Manba nusxalanmaydi: uni soddalashtiring, ritm va masshtabini sozlang, zamonaviy palitraga o‘tkazing va libosda qayerga qo‘llashni hal qiling.</p></div>
+ <div class="grid2" style="--c:var(--m2)"><div class="card"><h3>Manba</h3><div class="stage"><svg viewBox="0 0 120 110" width="200" role="img" aria-label="Manba motivi"><rect width="120" height="110" rx="10" fill="#F4EFE6"/><g transform="translate(60,55) scale(1.4)">${MOTIF(0,PALS[0][1])}</g></svg></div><p class="sm mut" style="margin-top:8px;text-align:center">Atlas-adras bodom naqshi (sxematik tasvir)</p>
+ <h3 style="margin-top:12px">Uslublashtirish nazorati</h3>${R('simp','Soddalashtirish',0,100,'%')}${R('rep','Ritm (takror)',3,8,'')}${R('scale','Masshtab',60,160,'%')}${R('rot','Burchak',-30,30,'°')}
+ <label class="opt"><input type="checkbox" id="mir" ${t.mirror?'checked':''}><span>Oynadagi akslantirish (simmetriya)</span></label>
+ <h3 style="margin-top:10px">Palitra</h3><div class="seg" id="pals">${PALS.map((x,i)=>`<button data-pal="${i}" aria-pressed="${t.pal===i}" style="min-width:auto;padding:0 10px;font-size:13px">${x[0]}</button>`).join('')}</div>
+ <h3 style="margin-top:12px">Qo‘llash joyi</h3><div class="seg" id="plc">${[['etak','Etak'],['yoqa','Yoqa va belbog‘'],['butun','Butun libos']].map(x=>`<button data-pl="${x[0]}" aria-pressed="${t.place===x[0]}" style="min-width:auto;padding:0 12px">${x[1]}</button>`).join('')}</div></div>
+ <div class="card"><h3>Libos maketi (jonli)</h3><div class="stage" id="dress"></div><div class="meter" style="margin-top:10px"><span>Abstraksiya</span><div class="bar"><i id="gb" style="--c:var(--m2)"></i></div><b id="gv"></b></div><p class="sm mut" id="gt"></p></div></div>
+ <div class="card" style="--c:var(--m2)"><h3>1. Bosqichlar tartibini to‘g‘ri joylashtiring</h3><div id="ord"></div></div>
+ <div class="card" style="--c:var(--m2)"><h3>2. Qaysi badiiy belgilarni asosiy deb ajratasiz?</h3>${perm('k',7).map(i=>`<label class="opt"><input type="checkbox" data-keep="${i}" ${t.keep.includes(i)?'checked':''}><span>${KEEP[i][0]}</span></label>`).join('')}
+ <h3 style="margin-top:14px">3. Uslublashtirishda nima qilasiz?</h3>${perm('s',5).map(i=>`<label class="opt"><input type="checkbox" data-sty="${i}" ${t.sty.includes(i)?'checked':''}><span>${STY[i][0]}</span></label>`).join('')}
+ <h3 style="margin-top:14px">4. Milliy manbaga munosabatingiz</h3>${perm('a',3).map(i=>`<label class="opt"><input type="radio" name="att" data-att="${i}" ${t.att===i?'checked':''}><span>${ATT[i][0]}</span></label>`).join('')}</div>
+ <div class="card" style="--c:var(--m2)"><h3>5. Refleksiya</h3><p class="sm mut">Yechimingizning kuchli va zaif tomonini yozing va nimani takomillashtirishingizni ayting.</p><textarea id="ref" placeholder="Kuchli tomoni … Zaif tomoni … Takomillashtiraman …">${esc(t.ref)}</textarea><button class="btn" id="fin" style="margin-top:10px">Yakunlash va baholash</button><div id="out"></div></div>`}
+function bindTrans(){const t=S.tr;
+ const absr=()=>{const v=t.simp;return [v<20?'Nusxaga yaqin':v<35?'Yengil soddalashtirilgan':v<=75?'Uslublashtirilgan (maqbul)':v<=90?'Kuchli abstraksiya':'Manbadan uzoqlashgan',v>=35&&v<=75]};
+ const dr=()=>{$('#dress').innerHTML=dressSVG(t,'a');const [lb,ok]=absr();$('#gb').style.width=t.simp+'%';$('#gv').textContent=t.simp+'%';$('#gt').innerHTML=`<b class="${ok?'good':''}">${lb}.</b> Uslublashtirish uchun 35–75% oralig‘i tavsiya etiladi: ritm va shakl saqlanadi, ortiqcha detal tushadi.`};
+ $$('[data-p]').forEach(r=>r.oninput=()=>{t[r.dataset.p]=+r.value;$('#v_'+r.dataset.p).textContent=r.value+({simp:'%',scale:'%',rot:'°',rep:''}[r.dataset.p]);dr()});
+ $('#mir').onchange=e=>{t.mirror=e.target.checked;dr()};
+ $$('[data-pal]').forEach(b=>b.onclick=()=>{t.pal=+b.dataset.pal;$$('[data-pal]').forEach(x=>x.setAttribute('aria-pressed',x===b));dr()});
+ $$('[data-pl]').forEach(b=>b.onclick=()=>{t.place=b.dataset.pl;$$('[data-pl]').forEach(x=>x.setAttribute('aria-pressed',x===b));dr()});
+ const od=()=>{$('#ord').innerHTML=t.ord.map((k,i)=>`<div class="ord"><b>${i+1}</b><span>${TSTEPS[k]}</span><button data-up="${i}" aria-label="Yuqoriga">↑</button><button data-dn="${i}" aria-label="Pastga">↓</button></div>`).join('');
+  $$('[data-up]').forEach(b=>b.onclick=()=>{const i=+b.dataset.up;if(i>0){[t.ord[i-1],t.ord[i]]=[t.ord[i],t.ord[i-1]];od()}});$$('[data-dn]').forEach(b=>b.onclick=()=>{const i=+b.dataset.dn;if(i<7){[t.ord[i+1],t.ord[i]]=[t.ord[i],t.ord[i+1]];od()}})};
+ od();dr();
+ $$('[data-keep]').forEach(c=>c.onchange=()=>{const i=+c.dataset.keep;t.keep=c.checked?[...t.keep,i]:t.keep.filter(x=>x!==i)});
+ $$('[data-sty]').forEach(c=>c.onchange=()=>{const i=+c.dataset.sty;t.sty=c.checked?[...t.sty,i]:t.sty.filter(x=>x!==i)});
+ $$('[data-att]').forEach(c=>c.onchange=()=>{t.att=+c.dataset.att});$('#ref').oninput=e=>{t.ref=e.target.value};
+ $('#fin').onclick=()=>{if(t.att===null){$('#out').innerHTML='<div class="fb badc">4-savolga javob bering.</div>';return}
+  const ok=t.ord.filter((k,i)=>k===i).length,acc=(set,arr)=>{let h=0,w=0;const tot=arr.filter(x=>x[1]).length;arr.forEach((x,i)=>{if(set.includes(i))x[1]?h++:w++});return clamp((h-w)/tot,0,1)};
+  const ka=acc(t.keep,KEEP),sa=acc(t.sty,STY),kog=r1(3*((ok/8)*.5+((ka+sa)/2)*.5)),emo=ATT[t.att][1];
+  const ij=r1(clamp((t.simp>=35&&t.simp<=75?1.2:t.simp>=20&&t.simp<=90?.6:0)+(t.pal!==0?1:0)+(t.rep>=3&&t.rep<=6?.4:.2)+(t.place!=='butun'?.4:.2),0,3)),ref=refScore(t.ref);
+  finish('transformatsiya',[kog,emo,ij,ref],[`Bosqichlar tartibi ${ok}/8, belgilar va uslublashtirish aniqligi ${Math.round((ka+sa)/2*100)}%. To‘g‘ri tartib: ${TSTEPS.map((x,i)=>(i+1)+') '+x).join('; ')}.`,`Manbaga munosabat: ${emo}/3. Metod nusxalashni emas, ma’noni anglab qayta talqin qilishni talab qiladi.`,`Soddalashtirish ${t.simp}% (maqbul 35–75), palitra: ${PALS[t.pal][0]}${t.pal===0?' (asl palitra: zamonaviylashtirilmagan)':''}, ritm ${t.rep}, joy: ${t.place==='etak'?'etak':t.place==='yoqa'?'yoqa va belbog‘':'butun libos'}.`,`Refleksiyada kuchli va zaif tomonni alohida yozing, 60+ belgi.`],'var(--m2)')}}
+
+const EC=[
+['G‘oya',[4,5],'Bo‘yin va ko‘krak qismi',[120,44],['Milliy bodom naqshi zamonaviy A-siluetga ko‘chirilgan: manba va yangilik uyg‘un.','Menga g‘oya yoqdi.','G‘oya yo‘q, chunki ko‘ylak uzun.']],
+['Rang',[2,3],'Belbog‘',[120,118],['Yorqin sariq belbog‘ to‘q ko‘k asosiy rang va kul rang bilan muvozanatlanmagan, kontrast haddan tashqari.','Ranglar chiroyli.','Ranglar kam, shuning uchun yaxshi emas.']],
+['Kompozitsiya',[3,4],'Umumiy siluet',[170,170],['Vertikal siluet yaxlit, ammo ko‘z belbog‘ va etakdagi naqsh o‘rtasida bo‘linadi.','Kompozitsiya yoqmadi.','Kompozitsiya mato turiga bog‘liq emas.']],
+['Material',[4,5],'Yubka matosi',[84,170],['Ipak atlas naqsh va to‘kilishga mos, milliy mato obrazini kuchaytiradi.','Mato yoqimli ko‘rinadi.','Ipak atlas tikuvga yaramaydi.']],
+['Bezak',[1,2],'Etak naqshi',[120,252],['Etakdagi naqsh juda zich: ritm yo‘qoladi, bezak ortiqcha yuklangan.','Bezak ko‘p, meni charchatdi.','Bezak umuman yo‘q.']],
+['Funksionallik',[2,3],'Yeng',[44,96],['Tor yeng va uzun etak harakatni cheklaydi, kundalik kiyishga noqulay.','Kiyib yurish qulay ko‘rinadi.','Funksionallik faqat narxga bog‘liq.']]];
+const REC=[['Belbog‘ rangini asosiy palitraga yaqinlashtirish',1],['Etakdagi naqsh zichligini kamaytirish',1],['Yeng kengligini oshirish',1],['Barcha ranglarni qora qilish',0],['Naqshni butunlay olib tashlash',0]];
+function sketch(opt,pins){const {belt='#E0A526',n=7,sl=0}=opt,w=sl?14:0;
+ const hem=Array.from({length:n},(_,k)=>{const x=46+k*(148/(n-1||1));return `<g transform="translate(${x},248) scale(.34)">${MOTIF(0,['#8C8C93','#8C8C93','#8C8C93','#8C8C93'])}</g>`}).join('');
+ return `<svg viewBox="0 0 240 290" width="250" role="img" aria-label="Libos eskizi"><rect width="240" height="290" rx="12" fill="#F4EFE6"/>
+ <path d="M66 70 L36 ${118+w} L50 ${124+w} L76 90Z M174 70 L204 ${118+w} L190 ${124+w} L164 90Z" fill="#1F3F8F" stroke="#00000033"/>
+ <path d="${DRESS.replace('M92 20','M92 22').replace('H148','H148')}" fill="#1F3F8F" stroke="#00000033" stroke-width="1.5"/><path d="M104 22 Q120 38 136 22" fill="#F4EFE6" stroke="#00000033"/>
+ <rect x="62" y="112" width="116" height="13" fill="${belt}"/>${hem}${pins||''}</svg>`}
+function viewEx(){const e=S.ex;
+ return `<div class="card"><span class="tag" style="--c:var(--m3)">Mashg‘ulot 3 · Estetik ekspertiza</span><h2>Libos eskizini ekspert sifatida baholang</h2>
+ <p class="mut">Namuna: uzun ko‘ylak eskizi. Asosiy rang to‘q ko‘k, yordamchi kul rang, belbog‘ yorqin sariq; etakda zich bodom naqshi; mato ipak atlas; yeng tor; siluet A-shaklli. Eskizdagi raqamli belgilarni bosing: har bir mezon uchun ball (1–5) va dalil tanlang.</p></div>
+ <div class="studio" style="--c:var(--m3);grid-template-columns:minmax(0,290px) minmax(0,1fr)"><div class="card lib"><div class="stage" id="sk"></div><div class="legend" style="margin-top:8px"><span><i style="background:var(--m3)"></i>baholanmagan</span><span><i style="background:var(--ok)"></i>baholangan</span></div></div>
+ <div><div class="card" id="cp"></div>
+ <div class="card"><h3>Takomillashtirish takliflari (2–3 tasini tanlang)</h3>${REC.map((x,i)=>`<label class="opt"><input type="checkbox" data-rec="${i}" ${e.rec.includes(i)?'checked':''}><span>${x[0]}</span></label>`).join('')}
+ <h3 style="margin-top:14px">Umumiy estetik xulosa</h3><textarea id="cn" placeholder="Kuchli tomonlari … Kamchiliklari … Tavsiyam …">${esc(e.concl)}</textarea>
+ <button class="btn" id="fin" style="margin-top:10px">Yakunlash va baholash</button><div id="out"></div></div></div></div>`}
+function bindEx(){const e=S.ex;
+ const pins=()=>EC.map((c,i)=>`<g class="pin" data-pin="${i}" tabindex="0" role="button" aria-label="${c[0]} mezoni"><circle cx="${c[3][0]}" cy="${c[3][1]}" r="${e.cur===i?15:12}" fill="${e.rate[i]&&e.dal[i]!==undefined?'var(--ok)':'var(--m3)'}" stroke="#fff" stroke-width="2.5"/><text x="${c[3][0]}" y="${c[3][1]+5}" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" pointer-events="none">${i+1}</text></g>`).join('');
+ const drawSk=()=>{const imp=e.after;$('#sk').innerHTML=sketch(imp?{belt:e.rec.includes(0)?'#8F6B24':'#E0A526',n:e.rec.includes(1)?4:7,sl:e.rec.includes(2)?1:0}:{},imp?'':pins());
+  $$('[data-pin]').forEach(g=>{g.onclick=()=>{e.cur=+g.dataset.pin;drawSk();panel()};g.onkeydown=ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();g.onclick()}}})};
+ const panel=()=>{const i=e.cur,c=EC[i];$('#cp').innerHTML=`<h3>${i+1}. ${c[0]} · ${c[2]}</h3><p class="sm mut">Ball: 1 — zaif, 5 — a’lo</p><div class="seg" id="rt">${[1,2,3,4,5].map(v=>`<button aria-pressed="${e.rate[i]===v}">${v}</button>`).join('')}</div>
+  <p class="sm" style="margin:12px 0 4px"><b>Dalil tanlang</b></p>${perm('d'+i,3).map(j=>`<label class="opt"><input type="radio" name="d" data-d="${j}" ${e.dal[i]===j?'checked':''}><span class="sm">${c[4][j]}</span></label>`).join('')}
+  <div style="display:flex;gap:8px;margin-top:8px"><button class="btn g sm" id="pv" ${i===0?'disabled':''}>← Oldingi</button><button class="btn g sm" id="nx" ${i===5?'disabled':''}>Keyingi →</button></div>`;
+  $$('#rt button').forEach((b,v)=>b.onclick=()=>{e.rate[i]=v+1;$$('#rt button').forEach((x,j)=>x.setAttribute('aria-pressed',j===v));drawSk()});
+  $$('[data-d]').forEach(r=>r.onchange=()=>{e.dal[i]=+r.dataset.d;drawSk()});
+  $('#pv').onclick=()=>{e.cur--;drawSk();panel()};$('#nx').onclick=()=>{e.cur++;drawSk();panel()}};
+ drawSk();panel();
+ $$('[data-rec]').forEach(c=>c.onchange=()=>{const i=+c.dataset.rec;e.rec=c.checked?[...e.rec,i]:e.rec.filter(x=>x!==i)});$('#cn').oninput=x=>{e.concl=x.target.value};
+ $('#fin').onclick=()=>{if(Object.keys(e.rate).length<6||Object.keys(e.dal).length<6){$('#out').innerHTML='<div class="fb badc">Barcha 6 belgi bo‘yicha ball va dalil tanlang.</div>';return}
+  const near=EC.filter((c,i)=>e.rate[i]>=c[1][0]&&e.rate[i]<=c[1][1]).length,kog=near>=5?3:near>=4?2:near>=3?1:0;
+  const an=EC.filter((c,i)=>e.dal[i]===0).length,sub=EC.filter((c,i)=>e.dal[i]===1).length,emo=an>=5?3:an>=4?2:an>=2?1:0;
+  let h=0,w=0;REC.forEach((x,i)=>{if(e.rec.includes(i))x[1]?h++:w++});const ijo=r1(3*clamp((h-w)/2,0,1)),ref=refScore(e.concl);
+  const bars=EC.map((c,i)=>`<div style="margin:8px 0"><div class="sm"><b>${c[0]}</b>: sizning bahoingiz ${e.rate[i]}, ekspert oralig‘i ${c[1][0]}${c[1][1]>c[1][0]?'–'+c[1][1]:''}</div><svg viewBox="0 0 250 22" width="100%" style="max-width:300px"><rect x="0" y="9" width="250" height="4" rx="2" fill="var(--line)"/><rect x="${(c[1][0]-1)*50}" y="5" width="${(c[1][1]-c[1][0]+1)*50}" height="12" rx="6" fill="var(--m3)" fill-opacity=".3"/><circle cx="${(e.rate[i]-.5)*50}" cy="11" r="7" fill="${e.rate[i]>=c[1][0]&&e.rate[i]<=c[1][1]?'var(--ok)':'var(--bad)'}"/></svg></div>`).join('');
+  finish('ekspertiza',[kog,emo,ijo,ref],[`${near}/6 mezon bo‘yicha bahoyingiz ekspert oralig‘iga mos keldi.`,`Tahliliy dalillar: ${an}/6, sub’ektiv (“yoqdi/yoqmadi”): ${sub}. Metodning maqsadi sub’ektiv bahodan dalilga o‘tish.`,`To‘g‘ri takliflar: ${h}, noto‘g‘ri: ${w}.`,`Xulosada kuchli va kamchilik tomonlari alohida ko‘rsatilishi, 60+ belgi bo‘lishi kerak.`],'var(--m3)');
+  $('#out').insertAdjacentHTML('beforeend',`<div class="fb"><h3>Ekspert oralig‘i bilan solishtirish</h3>${bars}<button class="btn o sm" id="ab" style="--c:var(--m3)">Taklifingiz asosida qayta ishlangan eskizni ko‘rish</button></div>`);
+  $('#ab').onclick=()=>{e.after=!e.after;drawSk();$('#sk').scrollIntoView({behavior:'smooth',block:'center'});$('#ab').textContent=e.after?'Asl eskizga qaytish':'Taklifingiz asosida qayta ishlangan eskizni ko‘rish'}}}
+
+const SL=[['Sarlavha',[['nom','Loyiha nomi'],['shior','Qisqa shior']]],['G‘oya manbasi',[['manba','Manba va uning ma’nosi']]],['Rang va material',[['rang','Rang yechimi'],['mat','Material va siluet']]],['Milliy + zamonaviy',[['el','Milliy element'],['zam','Zamonaviy yechim']]],['Natija',[['maqsad','Estetik maqsad'],['natija','Kutilgan natija']]]];
+const PQ=[['Ekspert: “Nega aynan shu rang tanlandi?”',[['Rangni manbadagi ma’no va auditoriya bilan bog‘lab dalil keltiraman.',1.5],['Menga shu rang yoqadi.',0],['Hamma shunday qiladi, shuning uchun.',.5]]],['Guruhdosh: “Bu loyihani qanday takomillashtirish mumkin?”',[['Fikr-mulohazani yozib olaman va bitta kamchilikni tuzatish rejasini aytaman.',1.5],['Hamma narsa to‘g‘ri, o‘zgartirmayman.',0],['Boshqa loyihani ko‘rsatib, javob bermayman.',0]]]];
+function viewPitch(){const p=S.pt;
+ return `<div class="card"><span class="tag" style="--c:var(--m4)">Mashg‘ulot 4 · Loyiha-pitch</span><h2>5 slaydli pitch: dizayn g‘oyangizni himoya qiling</h2><p class="mut">Slaydlarni to‘ldiring, palitrani tanlang, pitch matnini yozing va taymer bilan mashq qiling. Maqsad: g‘oya manbasi, rang, material, milliy va zamonaviy elementni qisqa va aniq asoslash.</p></div>
+ <div class="studio" style="--c:var(--m4);grid-template-columns:minmax(0,1fr) minmax(0,1fr)"><div class="card"><div class="seg" id="sn" style="margin-bottom:10px">${SL.map((s,i)=>`<button data-s="${i}" aria-pressed="${p.cur===i}" style="min-width:auto;padding:0 10px;font-size:13px">${i+1}. ${s[0]}</button>`).join('')}</div><div id="sf"></div>
+ <h3 style="margin-top:12px">Palitra</h3><div style="display:flex;gap:10px;align-items:center">${p.pal.map((c,i)=>`<input type="color" data-pc="${i}" value="${c}" aria-label="Rang ${i+1}" style="width:44px;height:36px;border:none;background:none;padding:0">`).join('')}<span class="sm mut" id="hm"></span></div></div>
+ <div class="card"><h3>Slayd ko‘rinishi</h3><div id="sv"></div></div></div>
+ <div class="card" style="--c:var(--m4)"><h3>Pitch matni <span class="pill" id="wc">0 so‘z</span></h3><p class="sm mut">3–5 daqiqa uchun taxminan 350–650 so‘z.</p><textarea id="pt" style="min-height:130px">${esc(p.script)}</textarea>
+ <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:10px"><div class="tm" id="tm">05:00</div><button class="btn o" id="ts">Boshlash</button><button class="btn g" id="tr">Qayta</button></div></div>
+ <div class="card" style="--c:var(--m4)"><h3>Savol-javob</h3>${PQ.map((q,i)=>`<p class="sm" style="margin:8px 0 2px"><b>${q[0]}</b></p>${perm('q'+i,3).map(j=>`<label class="opt"><input type="radio" name="q${i}" data-q="${i}:${j}" ${p.qa[i]===j?'checked':''}><span class="sm">${q[1][j][0]}</span></label>`).join('')}`).join('')}
+ <button class="btn" id="fin" style="margin-top:10px">Yakunlash va baholash</button><div id="out"></div></div>`}
+function bindPitch(){const p=S.pt;
+ const f=()=>{const s=SL[p.cur];$('#sf').innerHTML=s[1].map(([k,l])=>`<div class="fld"><b>${l}</b><textarea data-f="${k}" style="min-height:56px">${esc(p.sl[p.cur][k]||'')}</textarea></div>`).join('');$$('[data-f]').forEach(t=>t.oninput=()=>{p.sl[p.cur][t.dataset.f]=t.value;sv()})};
+ const sv=()=>{const [a,b,c]=p.pal,s=SL[p.cur],d=p.sl[p.cur],dark=lum(a)<.35;const fg=dark?c:a;
+  $('#sv').innerHTML=`<div class="slide" style="background:${dark?a:c};color:${fg}"><div style="height:6px;width:56px;background:${b};border-radius:3px"></div><h4>${esc(p.cur===0?(d.nom||'Loyiha nomi'):s[0])}</h4>${s[1].map(([k])=>`<p style="${p.cur===0&&k==='nom'?'display:none':''}">${esc(d[k]||'…')}</p>`).join('')}<div style="position:absolute;right:4%;bottom:6%;display:flex;gap:4px">${p.pal.map(x=>`<i style="width:14px;height:14px;border-radius:50%;background:${x};border:1px solid #fff8"></i>`).join('')}</div></div><p class="sm mut" style="margin-top:6px;text-align:center">Slayd ${p.cur+1} / 5</p>`;
+  const H=harmony(p.pal),ct=r1(cr(a,c));$('#hm').innerHTML=`${H.name} · matn kontrasti ${ct}:1 ${ct>=4.5?'<b class="good">(o‘qiladi)</b>':'<b class="badc">(past)</b>'}`};
+ $$('[data-s]').forEach(b=>b.onclick=()=>{p.cur=+b.dataset.s;$$('[data-s]').forEach(x=>x.setAttribute('aria-pressed',x===b));f();sv()});
+ $$('[data-pc]').forEach(c=>c.oninput=()=>{p.pal[+c.dataset.pc]=c.value.toUpperCase();sv()});
+ f();sv();
+ const pt=$('#pt'),wc=$('#wc'),upd=()=>{const n=words(pt.value);wc.textContent=n+' so‘z '+(n>=350&&n<=650?'✓':'')};upd();pt.oninput=()=>{p.script=pt.value;upd()};
+ $$('[data-q]').forEach(c=>c.onchange=()=>{const[a,b]=c.dataset.q.split(':');p.qa[+a]=+b});
+ let sec=300,iv=null;const tf=()=>{$('#tm').textContent=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')};
+ $('#ts').onclick=()=>{if(iv){clearInterval(iv);iv=null;$('#ts').textContent='Davom etish'}else{$('#ts').textContent='To‘xtatish';iv=setInterval(()=>{if(sec>0){sec--;tf()}else{clearInterval(iv);iv=null;$('#ts').textContent='Boshlash'}},1000)}};
+ $('#tr').onclick=()=>{clearInterval(iv);iv=null;sec=300;tf();$('#ts').textContent='Boshlash'};window._stop=()=>{if(iv)clearInterval(iv)};
+ $('#fin').onclick=()=>{if(Object.keys(p.qa).length<2){$('#out').innerHTML='<div class="fb badc">Ikkala savolga javob tanlang.</div>';return}
+  const all=p.sl.map(s=>Object.values(s).join(' ')).join(' ')+' '+p.script,fields=SL.flatMap((s,i)=>s[1].map(([k])=>(p.sl[i][k]||'').trim().length>=15)).filter(Boolean).length,tot=SL.reduce((a,s)=>a+s[1].length,0);
+  const kog=fields>=tot-1?3:fields>=Math.ceil(tot*.7)?2:fields>=Math.ceil(tot*.4)?1:0;
+  const KW=['rang','material','siluet','naqsh','kompozitsiya','shakl','faktura','palitra','ritm','detal','kesim','bezak'],kc=KW.filter(k=>all.toLowerCase().includes(k)).length,ks=kc>=6?3:kc>=4?2:kc>=2?1:0,H=harmony(p.pal),ijo=r1((ks+H.score)/2);
+  const mi=/(milliy|an’ana|an'ana|atlas|adras|ikat|kashta|meros|xalq|zardo)/i.test(all),zm=/(zamonaviy|trend|minimal|raqamli|urban|ko‘cha|ko'cha|yangi|funksional)/i.test(all),emo=mi&&zm?3:(mi||zm)?1:0;
+  const ref=r1(clamp(PQ.reduce((a,q,i)=>a+q[1][p.qa[i]][1],0),0,3)),w=words(p.script);
+  finish('pitch',[kog,emo,ijo,ref],[`To‘ldirilgan maydon: ${fields}/${tot}. Pitch matni: ${w} so‘z ${w>=350&&w<=650?'(me’yorda)':'(tavsiya: 350–650)'}.`,`Milliy element: ${mi?'bor':'yo‘q'}, zamonaviy element: ${zm?'bor':'yo‘q'}. Ikkalasi bo‘lsa uyg‘unlik ko‘rinadi.`,`Dizayn atamalari: ${kc} xil (${ks}/3); palitra sxemasi: ${H.name} (${H.score}/3). Ijodiy ball ikkalasining o‘rtachasi.`,`Savol-javobda dalilli va o‘z ishiga tanqidiy javob tanlash ball beradi.`],'var(--m4)')}}
+
+function viewInfo(){const done=Object.keys(S.res).length;
+ return `<div class="hero"><svg class="pat" viewBox="0 0 120 110" aria-hidden="true"><g transform="translate(60,55) scale(1.9)">${MOTIF(0,['#fff','#fff','#fff','#fff'])}</g></svg><span class="tag" style="--c:rgb(255 255 255/.18)">Dizayn ta’limi · “Moda industriyasi”</span><h1>Estetik madaniyat studiyasi</h1>
+ <p>To‘rtta interfaol metod, to‘rtta tayyor mashg‘ulot. Moodboard yig‘ing, milliy naqshni zamonaviy libosga aylantiring, eskizni ekspert sifatida baholang va g‘oyangizni pitch bilan himoya qiling. Yakunda ishingiz 4 mezon bo‘yicha avtomatik baholanadi.</p>
+ <button class="btn" style="--c:var(--m1)" data-go="moodboard">Boshlash: Moodboard</button> <span class="pill" style="background:transparent;color:inherit;border-color:rgb(255 255 255/.3)">${done} / 4 bajarildi</span></div>
+ <div class="grid2">${MET.map((m,i)=>`<div class="mcard" style="--c:${m.c}"><div><span class="tag">${i+1}. ${m.n}</span></div><p style="margin:0">${m.core}</p><p class="sm mut" style="margin:0"><b>Vosita:</b> ${m.tool}</p><h3 style="margin:6px 0 2px">Bosqichlar</h3><ol>${m.steps.map(s=>`<li>${s}</li>`).join('')}</ol><h3 style="margin:6px 0 2px">45 daqiqalik reja</h3><div class="plan">${m.plan.map(p=>`<span class="pill" style="--c:${m.c}"><b>${p[0]} daq.</b> ${p[1]}</span>`).join('')}</div><div style="margin-top:auto;padding-top:8px"><button class="btn sm" style="--c:${m.c}" data-go="${m.id}">${S.res[m.id]?'Qayta bajarish':'Mashg‘ulotni boshlash'}</button></div></div>`).join('')}</div>
+ <div class="card" style="margin-top:14px"><h3>Baholash mezonlari (0–3 ball, jami 12)</h3><table>${C.map(c=>`<tr><th style="width:38%">${c[0]}</th><td>${c[1]}</td></tr>`).join('')}</table></div>`}
+function viewFinal(){const ids=MET.filter(m=>S.res[m.id]);
+ if(!ids.length)return `<div class="card"><h2>Yakuniy baho</h2><p class="mut">Hali birorta mashg‘ulot yakunlanmagan. Mashg‘ulotni bajarib, “Yakunlash va baholash” tugmasini bosing.</p><button class="btn" data-go="moodboard">Mashg‘ulotga o‘tish</button></div>`;
+ const avg=C.map((c,i)=>r1(ids.reduce((a,m)=>a+S.res[m.id][i],0)/ids.length)),tot=r1(avg.reduce((a,b)=>a+b,0)),[lv,tx]=levelOf(tot),lo=avg.indexOf(Math.min(...avg));
+ const REC=['Metod mezonlarini qayta o‘qing, mezonlar jadvali bilan ishlang va ball oralig‘ini solishtiring.','Milliy manbaning ma’nosini o‘rganing; milliy va zamonaviy elementlarni birga ishlating.','Rang palitrasini cheklang (1–2 asosiy rang + neytral), kompozitsiyani muvozanatlang.','Har qaror uchun “chunki …” bilan sabab yozing, kuchli va zaif tomonni alohida ko‘rsating.'];
+ return `<div class="card"><h2>Yakuniy baho</h2><p class="sm mut">Bajarilgan mashg‘ulotlar: ${ids.length} / 4</p><div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center"><div>${radar(avg,'var(--acc)')}</div><div style="flex:1;min-width:220px"><div class="big">${tot}<span class="mut" style="font-size:20px">/12</span></div><p style="margin-top:8px"><b>${lv}.</b> ${tx}</p>${C.map((c,i)=>`<div class="meter"><span>${c[0]}</span><div class="bar"><i style="width:${avg[i]/3*100}%"></i></div><b>${avg[i]}</b></div>`).join('')}</div></div>
+ <div class="fb"><b>Tavsiya (eng past mezon: ${C[lo][0]}):</b> ${REC[lo]}</div></div>
+ <div class="card"><h3>Mashg‘ulotlar bo‘yicha</h3><div style="overflow-x:auto"><table style="min-width:440px"><tr><th>Metod</th>${C.map(c=>`<th>${c[0].split('-')[0]}</th>`).join('')}<th>Jami</th></tr>${MET.map(m=>{const r=S.res[m.id];return `<tr><td>${m.n}</td>${r?r.map(x=>`<td>${x}</td>`).join('')+`<td><b>${r1(r.reduce((a,b)=>a+b,0))}</b></td>`:'<td colspan="5" class="mut">bajarilmagan</td>'}</tr>`}).join('')}</table></div></div>
+ <div class="card"><h3>Natija kartasi</h3><p class="sm mut">Ismingizni yozing va kartani o‘qituvchiga yuboring.</p><input type="text" id="nm" placeholder="F.I.Sh." value="${esc(S.name)}"><textarea id="ct" readonly style="min-height:150px;margin-top:8px"></textarea><div style="display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap"><button class="btn" id="cp">Nusxa olish</button><button class="btn g" id="rs">Natijalarni tozalash</button><span id="cm" class="sm mut"></span></div></div>`}
+function card(){const ids=MET.filter(m=>S.res[m.id]);const avg=C.map((c,i)=>r1(ids.reduce((a,m)=>a+S.res[m.id][i],0)/ids.length)),tot=r1(avg.reduce((a,b)=>a+b,0));
+ return `Estetik madaniyat studiyasi — natija kartasi\nTalaba: ${S.name||'—'}\n`+ids.map(m=>`${m.n}: ${r1(S.res[m.id].reduce((a,b)=>a+b,0))}/12`).join('\n')+`\nMezonlar (o‘rtacha): `+C.map((c,i)=>`${c[0]} ${avg[i]}/3`).join('; ')+`\nJami: ${tot}/12 — ${levelOf(tot)[0]}`}
+function bindFinal(){const nm=$('#nm');if(!nm)return;$('#ct').value=card();nm.oninput=()=>{S.name=nm.value;save();$('#ct').value=card()};
+ $('#cp').onclick=()=>{const t=$('#ct');t.select();const ok=()=>{$('#cm').textContent='Nusxa olindi'};try{navigator.clipboard.writeText(t.value).then(ok,()=>{try{document.execCommand('copy');ok()}catch(e){}})}catch(e){try{document.execCommand('copy');ok()}catch(_){}}};
+ $('#rs').onclick=()=>{S.res={};save();show('final')}}
+const TABS=[['info','Metodlar',null],...MET.map((m,i)=>[m.id,(i+1)+'. '+m.n.split('-')[0],m.c]),['final','Yakuniy baho',null]];
+const tabs=$('#tabs'),view=$('#view');
+TABS.forEach(([id,l,c])=>{const b=document.createElement('button');b.dataset.id=id;b.setAttribute('role','tab');if(c)b.style.setProperty('--c',c);b.innerHTML=(c?'<i></i>':'')+l;if(S.res[id])b.classList.add('done');b.onclick=()=>{location.hash=id};tabs.appendChild(b)});
+function render(id){if(window._stop)window._stop();
+ $$('.tabs button').forEach(b=>b.setAttribute('aria-selected',b.dataset.id===id));
+ const m=MET.find(x=>x.id===id);view.style.setProperty('--c',m?m.c:'var(--acc)');
+ view.innerHTML=id==='info'?viewInfo():id==='moodboard'?viewMood():id==='transformatsiya'?viewTrans():id==='ekspertiza'?viewEx():id==='pitch'?viewPitch():viewFinal();
+ if(id==='moodboard')bindMood();else if(id==='transformatsiya')bindTrans();else if(id==='ekspertiza')bindEx();else if(id==='pitch')bindPitch();else if(id==='final')bindFinal();
+ $$('[data-go]').forEach(b=>b.onclick=()=>{location.hash=b.dataset.go});
+ const act=$('.tabs button[aria-selected=true]');if(act)act.scrollIntoView({inline:'center',block:'nearest'});scrollTo(0,0)}
+function show(id){document.startViewTransition?document.startViewTransition(()=>render(id)):render(id)}
+function route(){let h=(location.hash||'').slice(1);h=ALIAS[h]||h;show(TABS.some(t=>t[0]===h)?h:'info')}
+addEventListener('hashchange',route);route();
+
+</script>
